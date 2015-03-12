@@ -19,12 +19,12 @@ public class Employee
 {
     public string Name { get; set; }
     public string Department { get; set; }
-    public string Salary { get; set; }
+    public double Salary { get; set; }
 }
 
 public class MaxSalaryRule : StateRule<Employee>
 {
-    public override Expression<Func<Employee, bool>>
+    public override Expression<Func<Employee, bool>> Predicate
     {
         get { return candidate => candidate.Salary < 40000; }
     }
@@ -32,7 +32,7 @@ public class MaxSalaryRule : StateRule<Employee>
 
 public class InHrDepartmentRule : StateRule<Employee>
 {
-    public override Expression<Func<Employee, bool>>
+    public override Expression<Func<Employee, bool>> Predicate
     {
         get { return candidate => candidate.Department == "Human Resources"; }
     }
